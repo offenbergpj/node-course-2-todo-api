@@ -35,7 +35,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
     //    console.log(result);
     //});
 
-    // increase number
+    // increase number and change name
     db.collection('Users').findOneAndUpdate({
         _id: new ObjectID("5b1618fe74867603f4c9c94b")
     }, {
@@ -47,8 +47,6 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
     ).then((results) => {
         console.log(results);
     });
-
-
 
     //client.close();
 });
