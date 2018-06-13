@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "node-todo-api",
   "main": "app.js",
+  "scripts": {
+    "test": "mocha server/**/*.test.js",
+    "test-watch": "nodemon --exec \"npm test\""
+  },
   "author": {
     "name": "offenberg"
   },
@@ -11,5 +15,11 @@
     "express": "^4.16.3",
     "mongodb": "^3.0.10",
     "mongoose": "^5.1.4"
+  },
+  "devDependencies": {
+    "expect": "^23.1.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "supertest": "^3.1.0"
   }
 }
