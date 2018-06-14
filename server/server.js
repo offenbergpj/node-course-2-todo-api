@@ -35,10 +35,7 @@ app.get('/todos', (req, res) => {
 app.get('/todos/:id', (req, res) => {
     var id = req.params.id;
 
-    //validate id
-    // respond with 404 - send back empty body
     if (!ObjectID.isValid(id)) {
-        console.log('ID not valid');
         return res.status(404).send();
     }
 
