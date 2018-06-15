@@ -10,7 +10,9 @@ const todos = [{
     text: 'First test todo'
 }, {
     _id: new ObjectID(),
-    text: 'Second test todo'
+        text: 'Second test todo',
+        completed: true,
+        completedAt: 333
 }];
 
 // before test runs remove all todos. so the test correctly expect only 1 todo when test is creating one..
@@ -154,3 +156,50 @@ describe('DELETE /todos/:id', () => {
     });
 });
 
+describe('PATCH /todos/:id', () => {
+
+    it('should update a todo', (done) => {
+        // grab id of first item
+        // update text, set completed to true
+        // assert 200
+        // assert custom. text is changed, completed is true, completedAt is a number
+
+        var hexId = todos[0]._id.toHexString();
+        var text = 'Test todo text1';
+
+        request(app)
+            .patch(`/todos/${hexId}`)
+            .send({ text, completed: true })
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.todo.text).toBe(text);
+                expect(res.body.todo.completed).toBe(true);
+                expect(res.body.todo.completedAt).toBeA;
+            })
+            .end(done);
+
+    });
+
+    it('should clear completedAt when todo is not completed', (done) => {
+        // grab id of first item
+        // update text, set completed to false
+        // assert 200
+        // assert custom. text is changed, completed is false, completedAt is null
+
+        var hexId = todos[1]._id.toHexString();
+        var text = 'Test todo text2';
+
+        request(app)
+            .patch(`/todos/${hexId}`)
+            .send({ text, "completed": false })
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.todo.text).toBe(text);
+                expect(res.body.todo.completed).toBeTruthy;
+                expect(res.body.todo.completedAt).toBeNull;
+            })
+            .end(done);
+
+    });
+
+});
