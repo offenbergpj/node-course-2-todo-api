@@ -131,7 +131,6 @@ describe('DELETE /todos/:id', () => {
                     done();
                 }).catch((e) => done(e));
             });
-
     });
 
     it('should return a 404 if todo not found', (done) => {
@@ -153,6 +152,5 @@ describe('DELETE /todos/:id', () => {
             .expect(404)
             .end(done);
     });
-
 });
 
