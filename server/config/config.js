@@ -8,4 +8,3 @@ if (env === 'development') {
     process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
 }
 
-module.exports(env);
