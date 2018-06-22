@@ -133,7 +133,7 @@ app.delete('/users/me/token', authenticate, (req, res) => {
         res.status(200).send();
     }, () => {
         res.status(400).send();
-    })
+    });
 });
 
 app.get('/users/me',authenticate, (req, res) => {
